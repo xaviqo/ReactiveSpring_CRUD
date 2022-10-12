@@ -16,6 +16,11 @@ public class ProductController {
 
     private final ProductService service;
 
+    @GetMapping("range")
+    public Flux<ProductDto> range(@RequestParam int min, @RequestParam int max){
+        return service.priceRange(min,max);
+    }
+
     @GetMapping("all")
     public Flux<ProductDto> all(){
         return service.getAllProducts();

@@ -38,6 +38,11 @@ public class ProductService {
                 .map(EntityDtoUtil::toDto);
     }
 
+    public Flux<ProductDto> priceRange(int min, int max){
+        return repository.findByPriceBetween(min,max)
+                .map(EntityDtoUtil::toDto);
+    }
+
     public Mono<Void> deleteProduct(String id){
         return repository.deleteById(id);
     }
